@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "coffe-system-yiakpd"
+  },
+  "targets": {
+    "coffe-system-yiakpd": {
+      "hosting": {
+        "liff": [
+          "coffe-system-yiakpd-liff"
+        ]
+      }
+    }
+  }
+}

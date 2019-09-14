@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "liff",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
