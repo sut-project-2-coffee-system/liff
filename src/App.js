@@ -23,7 +23,7 @@ function App(props) {
       window.liff.sendMessages([
         {
           type: 'text',
-          text: "สั่ง " + menuName + " " + amount + "แก้ว " +remark
+          text: "สั่ง " + menuName + " " + amount + " แก้ว " +remark
         }
       ]).then(function () {
         window.liff.closeWindow();
