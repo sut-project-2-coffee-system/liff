@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import firebase from './Firebase'
 import { List, Avatar, Row, Col, Modal ,Input } from 'antd';
 import { loadmenu } from './actions'
 import { connect } from 'react-redux'
@@ -17,7 +16,8 @@ function App(props) {
   const [modal, setModal] = useState(false)
   const [amount,setAmount] = useState()
   const [remark, setRemark] = useState("")
-  function sendMss(menuName, amount) {
+  const [menuName, setMenuname] = useState()
+  function sendMss() {
     window.liff.init(function (data) { });
     window.liff.getProfile().then(function (profile) {
       window.liff.sendMessages([
@@ -35,6 +35,10 @@ function App(props) {
     });
     setModal(false)
   }
+  function onClickList(item){
+    setModal(true)
+    setMenuname(item.name)
+  }
 
   return (
     <div>
@@ -47,7 +51,7 @@ function App(props) {
             dataSource={props.menuList}
             renderItem={item => (
               <List.Item>
-                <span onClick={() => setModal(true)}>
+                <span onClick={ ()=>onClickList(item) }>
                   <List.Item.Meta
                     avatar={<Avatar src={item.image} />}
                     title={item.name}
