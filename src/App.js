@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import firebase from './Firebase'
 import { List, Avatar, Row, Col, Modal ,Input } from 'antd';
 import { loadmenu } from './actions'
 import { connect } from 'react-redux'
