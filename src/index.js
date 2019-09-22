@@ -7,13 +7,16 @@ import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, applyMiddleware(logger,thunk))
 
 const MyRedux = () => (
     <Provider store={store}>
-        <App />
+        <Router >
+            <App />
+        </Router>
     </Provider>
 )
 
