@@ -59,7 +59,7 @@ function User() {
 
                     <Row type="flex" justify="center">
                         <Col>
-                            <QRCode value={user.userId} />
+                            <QRCode value={JSON.stringify(user)} size={200} />
                         </Col>
                     </Row>
                 </Col>
