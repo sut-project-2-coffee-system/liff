@@ -14,18 +14,18 @@ function User() {
         userId: '',
         pictureUrl: '',
         statusMessage: '',
-        point: ''
     })
+    const [point, setPoint] = React.useState(0)
 
     React.useEffect(() => {
         liff.init(async (data) => {
             liff.getProfile().then((profile) => {
                 firebase.database().ref('member').orderByChild('userId').equalTo(profile.userId).on('value', function (snapshot) {
                     let user = snapshot.val();
-                    let point = 0
+                    let userPoint = 0
                     if (user !== null){
                         for (let i in user) {
-                            point = user[i].point
+                            userPoint = user[i].point
                         }
                     }
                     setUser({
@@ -33,8 +33,8 @@ function User() {
                         userId: profile.userId,
                         pictureUrl: profile.pictureUrl,
                         statusMessage: profile.statusMessage,
-                        point: point
                     })
+                    setPoint(userPoint)
                 })
             });
         });
@@ -55,7 +55,7 @@ function User() {
 
                     <Paragraph >statusMessage: <Text type="secondary" style={{ fontSize: 10 }}>{user.statusMessage}</Text></Paragraph>
 
-                    <Paragraph >point: <Text type="secondary" style={{ fontSize: 10 }}>{user.point}</Text></Paragraph>
+                    <Paragraph >point: <Text type="secondary" style={{ fontSize: 10 }}>{point}</Text></Paragraph>
 
                     <Row type="flex" justify="center">
                         <Col>
